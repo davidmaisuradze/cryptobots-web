@@ -1,0 +1,12 @@
+.menu-links__item {
+    @apply relative p-5 flex flex-row items-center justify-center mx-auto
+         hover:bg-blue-800 dark:bg-gray-800 
+         text-gray-300 hover:text-gray-100
+          hover:rounded-xl rounded-3xl
+          transition-all duration-300 ease-linear
+          cursor-pointer shadow-lg 
+}
+
+.btn-wallet-clip {
+  clip-path: polygon(10% 0, 95% 0, 100% 25%, 90% 100%, 5% 100%, 0 75%);
+}
