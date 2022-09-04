@@ -1,7 +1,7 @@
-import { UserActions } from "./../actions/user";
-import { all, delay, put, takeLatest } from "redux-saga/effects";
+import { UserActions } from './../actions/user';
+import { all, delay, put, takeLatest } from 'redux-saga/effects';
 
-import { loginSuccess, logOutSuccess } from "../actions";
+import { loginSuccess, logOutSuccess } from '../actions';
 
 export function* loginSaga() {
   yield delay(400);
@@ -9,8 +9,8 @@ export function* loginSaga() {
   yield put(
     loginSuccess({
       isAuthenticated: true,
-      firstName: "testF",
-      lastName: "testL",
+      firstName: 'testF',
+      lastName: 'testL',
     }),
   );
 }

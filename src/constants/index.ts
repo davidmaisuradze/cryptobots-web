@@ -1,1 +1,2 @@
-export { APP_ROUTES } from "./AppRoutes";
+export * from './app-routes.constants';
+export * from './auth.constants';

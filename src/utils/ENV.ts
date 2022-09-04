@@ -1,1 +1,1 @@
-export const ENV = (envVariable: string): string => process.env[envVariable] || "";
+export const ENV = (envVariable: string): string => process.env[envVariable] || '';

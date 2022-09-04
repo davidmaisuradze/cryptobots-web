@@ -1,20 +1,20 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from "redux";
-import { persistCombineReducers, persistStore } from "redux-persist";
-import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
-import storage from "redux-persist/lib/storage";
+import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+import { persistCombineReducers, persistStore } from 'redux-persist';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import storage from 'redux-persist/lib/storage';
 
-import reducers from "../reducers";
-import { IRootState } from "../../structures";
-import rootSaga from "../sagas";
+import reducers from '../reducers';
+import { IRootState } from '../../structures';
+import rootSaga from '../sagas';
 
-import middleware, { sagaMiddleware } from "./middleware";
+import middleware, { sagaMiddleware } from './middleware';
 
 const rootReducer = persistCombineReducers<IRootState>(
   {
-    key: "rrsb",
+    key: 'rrsb',
     stateReconciler: autoMergeLevel2,
     storage,
-    blacklist: ["alerts"],
+    blacklist: ['alerts'],
     timeout: 0,
   },
   reducers,

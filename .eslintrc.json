@@ -24,7 +24,7 @@
     "no-shadow": "off",
     "@typescript-eslint/no-var-requires": "off",
     "indent": ["error", 2],
-    "quotes": ["error", "double"],
+    "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
     "@typescript-eslint/no-shadow": ["error"],

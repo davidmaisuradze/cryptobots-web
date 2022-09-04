@@ -1,12 +1,12 @@
-import { IUser } from "./../../structures/user";
-import { createReducer } from "@reduxjs/toolkit";
+import { IUser } from './../../structures/user';
+import { createReducer } from '@reduxjs/toolkit';
 
-import { login, loginSuccess, logOut, logOutSuccess } from "../actions";
+import { login, loginSuccess, logOut, logOutSuccess } from '../actions';
 
 export const userState: IUser = {
   isAuthenticated: false,
-  firstName: "",
-  lastName: "",
+  firstName: '',
+  lastName: '',
 };
 
 export default {
@@ -32,8 +32,8 @@ export default {
       .addCase(logOutSuccess, (state) => {
         state = {
           isAuthenticated: false,
-          firstName: "",
-          lastName: "",
+          firstName: '',
+          lastName: '',
         };
       });
   }),

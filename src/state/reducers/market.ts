@@ -1,14 +1,14 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { IMarketState, IReducerMetaState } from "../../structures";
+import { createReducer } from '@reduxjs/toolkit';
+import { IMarketState, IReducerMetaState } from '../../structures';
 
-import { getItems, getItemsFailure, getItemsSuccess } from "../actions";
+import { getItems, getItemsFailure, getItemsSuccess } from '../actions';
 
 type MarketState = IMarketState & IReducerMetaState;
 export const marketState: MarketState = {
   data: [],
   page: 1,
   totalCount: 0,
-  error: "",
+  error: '',
   loading: false,
 };
 
@@ -16,7 +16,7 @@ export default {
   market: createReducer<MarketState>(marketState, (builder) => {
     builder
       .addCase(getItems, (state) => {
-        state.error = "";
+        state.error = '';
         state.loading = true;
       })
       .addCase(getItemsSuccess, (state, { payload }) => {
@@ -27,7 +27,7 @@ export default {
           page,
           totalCount,
           loading: false,
-          error: "",
+          error: '',
         };
       })
       .addCase(getItemsFailure, (state, { payload }) => {

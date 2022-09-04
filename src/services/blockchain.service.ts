@@ -1,16 +1,14 @@
-import { ethers } from "ethers";
+import { ethers } from 'ethers';
 import { 
   NFT_ADDRESS,
   NFT_MARKET_ADDRESS,
   NFT_MARKET_CONTRACT,
   NFT_CONTRACT,
-  INFURA_CURRENT_NETWORK,
-  INFURA_PROJECT_ID 
-} from "../config";
-import { ENV } from "../utils";
+} from '../config';
+import { ENV } from '../utils';
 
 export const rpcProvider = new ethers.providers.JsonRpcProvider(
-  ENV("REACT_APP_PUBLIC_ROPSTEN_URL")
+  ENV('REACT_APP_PUBLIC_GOERLI_URL')
 );
 
 export function getMarketContract(signer?: any) {

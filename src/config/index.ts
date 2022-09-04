@@ -1,3 +1,3 @@
-export * from "./button.config";
-export * from "./color.config";
-export * from "./nft.config";
+export * from './button.config';
+export * from './color.config';
+export * from './nft.config';

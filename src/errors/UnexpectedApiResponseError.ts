@@ -1,7 +1,7 @@
-import { CustomError } from "./CustomError";
+import { CustomError } from './CustomError';
 
 export class UnexpectedApiResponseError extends CustomError {
   constructor() {
-    super("Unexpected API response");
+    super('Unexpected API response');
   }
 }

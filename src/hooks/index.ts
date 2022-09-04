@@ -1,1 +1,1 @@
-export * from "./useStateSelector";
+export * from './useStateSelector';

@@ -1,4 +1,4 @@
-import { COLOR_CONFIG } from "./color.config";
+import { COLOR_CONFIG } from './color.config';
 
 export const BUTTON_CONFIG = {
   pink: {

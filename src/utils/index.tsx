@@ -1,1 +1,1 @@
-export * from "./ENV";
+export * from './ENV';

@@ -1,12 +1,12 @@
-import Cookie from "js-cookie";
-import { MissingUserInStoreError } from "../errors";
-import { IUser } from "../structures";
+import Cookie from 'js-cookie';
+import { MissingUserInStoreError } from '../errors';
+import { IUser } from '../structures';
 
 export enum Keys {
-  AccessToken = "Bearer",
-  RefreshToken = "Refresh",
-  Role = "Role",
-  User = "User",
+  AccessToken = 'Bearer',
+  RefreshToken = 'Refresh',
+  Role = 'Role',
+  User = 'User',
 }
 
 class CookieAuthService {
@@ -50,7 +50,7 @@ class CookieAuthService {
     try {
       return JSON.parse(user) as IUser;
     } catch (error) {
-      console.log(error, "Get user from cookies store");
+      console.log(error, 'Get user from cookies store');
       return null;
     }
   }

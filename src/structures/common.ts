@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 
 export type Icons =
-  | "bell-o"
-  | "bell"
-  | "bolt"
-  | "check-circle-o"
-  | "check-circle"
-  | "check"
-  | "dot-circle-o"
-  | "exclamation-circle"
-  | "question-circle-o"
-  | "question-circle"
-  | "sign-in"
-  | "sign-out"
-  | "times-circle-o"
-  | "times-circle"
-  | "times";
+  | 'bell-o'
+  | 'bell'
+  | 'bolt'
+  | 'check-circle-o'
+  | 'check-circle'
+  | 'check'
+  | 'dot-circle-o'
+  | 'exclamation-circle'
+  | 'question-circle-o'
+  | 'question-circle'
+  | 'sign-in'
+  | 'sign-out'
+  | 'times-circle-o'
+  | 'times-circle'
+  | 'times';
 
 export type PlainObject<T = any> = Record<string, T>;
 

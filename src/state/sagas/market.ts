@@ -1,8 +1,8 @@
-import { MarketActions } from "./../actions/market";
-import { request } from "@gilbarbara/helpers";
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { MarketActions } from './../actions/market';
+import { request } from '@gilbarbara/helpers';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-import { getItems, getItemsSuccess, getItemsFailure } from "../actions";
+import { getItems, getItemsSuccess, getItemsFailure } from '../actions';
 
 /**
  * Get Repos
