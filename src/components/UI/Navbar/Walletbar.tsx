@@ -1,6 +1,6 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import { Menu } from '@headlessui/react';
-import { Link } from 'react-router-dom';
 import { Image } from '../Image';
 import { profileDropdownRoutes } from '../../../constants';
 
@@ -61,10 +61,10 @@ export const Walletbar: FC<WalletbarProps> = ({
             )}
           </Menu.Item>
           <Menu.Item>
-            {({ active }) => (
+            {({ active }: any) => (
               <>
                 {profileDropdownRoutes.map(route => (
-                  <Link key={route.title} to={route.to}>
+                  <Link key={route.title} href={route.to}>
                     <span className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
                       {route.title}
                     </span>

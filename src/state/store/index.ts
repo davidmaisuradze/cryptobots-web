@@ -1,13 +1,18 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
+import {configureStore} from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 import { persistCombineReducers, persistStore } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 
 import reducers from '../reducers';
-import { IRootState } from '../../structures';
 import rootSaga from '../sagas';
+import { IRootState } from '../../structures';
 
-import middleware, { sagaMiddleware } from './middleware';
+declare module 'redux' {
+  export interface Store {
+      sagaTask: any
+  }
+}
 
 const rootReducer = persistCombineReducers<IRootState>(
   {
@@ -20,22 +25,21 @@ const rootReducer = persistCombineReducers<IRootState>(
   reducers,
 );
 
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const USE_DEV_TOOLS = process.env.NODE_ENV !== 'production';
 
-/* istanbul ignore next */
-export const configStore = (initialState: any = {}, additionalMiddleware: Middleware[] = []) => {
-  const store: Store = createStore(
-    rootReducer,
-    initialState,
-    composeEnhancer(applyMiddleware(...additionalMiddleware, ...middleware)),
-  );
+export const configStore = (context: any) => {
+  const sagaMiddleware = createSagaMiddleware();
+  const store = configureStore({
+      reducer: rootReducer,
+      preloadedState: {},
+      middleware: [sagaMiddleware],
+      devTools: USE_DEV_TOOLS
+  });
 
-  sagaMiddleware.run(rootSaga);
+  store.sagaTask = sagaMiddleware.run(rootSaga);
 
   return {
     persistor: persistStore(store),
     store,
   };
 };
-
-

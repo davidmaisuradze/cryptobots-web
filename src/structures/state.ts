@@ -3,7 +3,6 @@ import { IUser, IMarketState, IAppState } from '.';
 
 export interface IRootState {
   app: IAppState;
-  market: IMarketState & IReducerMetaState;
   user: IUser;
 }
 

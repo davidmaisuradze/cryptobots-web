@@ -1,10 +1,9 @@
 import React, { FC, useContext } from 'react';
+import Link from 'next/link';
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import Link from '../Link';
 import Walletbar from './Walletbar';
 import { Image } from '../Image';
-import { BlockchainContext } from '../../../context';
 import { routes } from '../../../constants';
 import { CircleSmallIcon } from '../Icons';
 
@@ -18,8 +17,6 @@ function classNames(...classes: string[]): string {
 }
 
 export const Navbar: FC = () => {
-  const { connectedAccount, isInstalled, isAccountLoading, connectWallet } = useContext(BlockchainContext);
-
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }): React.ReactElement => (
@@ -48,11 +45,10 @@ export const Navbar: FC = () => {
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
-                        to={item.href}
-                        activeClassName="bg-gray-900 text-white"
+                        href={item.href}
                       >
                         <span
-                          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
@@ -62,7 +58,7 @@ export const Navbar: FC = () => {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              {/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div className="text-gray-300 self-center mr-2">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium bg-purple-100 text-purple-800">
                     <CircleSmallIcon className="-ml-0.5 mr-1.5 h-2 w-2 text-indigo-400" />
@@ -79,7 +75,7 @@ export const Navbar: FC = () => {
                   connect={connectWallet}
                   account={connectedAccount}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 

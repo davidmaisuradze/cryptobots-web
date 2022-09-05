@@ -1,0 +1,68 @@
+/* oxanium-regular - latin */
+@font-face {
+  font-family: 'Oxanium';
+  font-style: normal;
+  font-weight: 400;
+  src: url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-regular.svg#Oxanium') format('svg'); /* Legacy iOS */
+}
+/* oxanium-500 - latin */
+@font-face {
+  font-family: 'Oxanium';
+  font-style: normal;
+  font-weight: 500;
+  src: url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-500.svg#Oxanium') format('svg'); /* Legacy iOS */
+}
+/* oxanium-800 - latin */
+@font-face {
+  font-family: 'Oxanium';
+  font-style: normal;
+  font-weight: 800;
+  src: url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-800.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-800.woff') format('woff'), /* Modern Browsers */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('~/public/assets/fonts/Oxanium/oxanium-v13-latin-800.svg#Oxanium') format('svg'); /* Legacy iOS */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* For whitespace on the sides varying with width */
+.padding-alignment {
+  @apply sm:px-24 px-2;
+}
+
+.margin-alignment {
+  @apply sm:mx-24 mx-2;
+}
+
+/* Add this class to hide horizontal scrolls */
+.hide-scroll-x::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Default body background from our theme */
+body {
+  @apply bg-paper;
+}
+
+/* Prevents blue highlight color of elements when tapped on phones */
+* {
+  -webkit-tap-highlight-color: transparent;
+}

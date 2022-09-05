@@ -1,30 +1,55 @@
-const colors = require('tailwindcss/colors');
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+const themeConstants = {
+  paper: "#F9F9F9",
+  primary: {
+    main: "#fff",
+    dark: "#e5e5e5",
+  },
+  secondary: {
+    main: "#212121",
+    dark: "#3A3A3A",
+  },
+  error: {
+    main: "#b22222",
+    dark: "#8b0000",
+  },
+  fg: { main: "#fff", dark: "rgba(55, 65, 81, 1)" },
+  breakpoints: {
+    xs: "0px",
+    mb: "350px",
+    sm: "600px",
+    md: "960px",
+    lg: "1280px",
+    xl: "1920px",
+  },
+};
 
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
+ mode: "jit",
+ purge: [
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
-    fontFamily: {
-      main: ['Oxanium'],
-    },
     extend: {
       colors: {
-        ...colors,
-        elVioletNatural: '#5333ff',
-        blueMediumDark: '#453FB9',
-        blueMediumLight: '#795cf5',
-        blueMedium: '#292fa7',
-        blueDodgeLight: '#2390ff',
-        valhalla: '#261858',
-        violet: '#0f0933',
-        violetNeutral: '#180a42',
-        purpleLight: '#dc19ff',
-        black: '#020205',
-        greigeLight: '#BFBCD2',
-        white: '#ffffff'
+        paper: themeConstants.paper,
+        primary: themeConstants.primary,
+        secondary: themeConstants.secondary,
+        error: themeConstants.error,
+        fg: themeConstants.fg.main,
+        "fg-dark": themeConstants.fg.dark,
       },
+    }, 
+    screens: {
+      ...defaultTheme.screens,
+      ...themeConstants.breakpoints,
+      ha: { raw: "(hover: hover)" },
     },
   },
-  plugins: [require('tailwindcss'), require('autoprefixer'), require('@tailwindcss/forms'),],
+  variants: {
+    extend: {},
+  },
+  plugins: [],
 };
