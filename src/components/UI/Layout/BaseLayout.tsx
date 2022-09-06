@@ -1,6 +1,7 @@
 
 import React, { FC } from 'react';
-import Navbar from '../Navbar';
+import Header from '../Header';
+import Footer from '../Footer';
 
 type Props = {
   children: React.ReactElement
@@ -9,11 +10,9 @@ type Props = {
 export const BaseLayout: FC<Props> = ({ children }) => {
   return (
     <>
-      <div className="bg-gray-50 overflow-hidden min-h-screen">
-        <div>
-          {children}
-        </div>
-      </div>
+      <Header/>
+      {children}
+      <Footer />
     </>
   );
 };
