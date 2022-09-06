@@ -9,9 +9,8 @@ type Props = {
 export const BaseLayout: FC<Props> = ({ children }) => {
   return (
     <>
-      <Navbar />
       <div className="bg-gray-50 overflow-hidden min-h-screen">
-        <div className="mx-auto space-y-4 sm:px-2 lg:px-4">
+        <div>
           {children}
         </div>
       </div>

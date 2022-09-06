@@ -44,23 +44,24 @@
 
 
 /* For whitespace on the sides varying with width */
-.padding-alignment {
+/* .padding-alignment {
   @apply sm:px-24 px-2;
-}
+} */
 
-.margin-alignment {
+/* .margin-alignment {
   @apply sm:mx-24 mx-2;
-}
+} */
 
 /* Add this class to hide horizontal scrolls */
-.hide-scroll-x::-webkit-scrollbar {
+/* .hide-scroll-x::-webkit-scrollbar {
   width: 0px;
-}
+} */
 
 /* Default body background from our theme */
-body {
+/* body {
   @apply bg-paper;
-}
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+} */
 
 /* Prevents blue highlight color of elements when tapped on phones */
 * {
