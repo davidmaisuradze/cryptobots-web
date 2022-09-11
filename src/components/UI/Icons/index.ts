@@ -1,3 +1,4 @@
-export { CircleSmallIcon } from './CircleSmall';
-export { UserIcon } from './User';
-export { ImageIcon } from './Image';
+export * from './CircleSmall';
+export * from './User';
+export * from './Image';
+export * from './ArrowRight';

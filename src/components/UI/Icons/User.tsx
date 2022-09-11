@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { IconProps } from './types';
 
-// eslint-disable-next-line react/display-name
 export const UserIcon: FC<IconProps> = ({ className }) => 
   (
     <svg

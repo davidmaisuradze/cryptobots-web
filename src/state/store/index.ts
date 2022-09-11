@@ -10,7 +10,7 @@ import { IRootState } from '../../structures';
 
 declare module 'redux' {
   export interface Store {
-      sagaTask: any
+    sagaTask: any
   }
 }
 
@@ -30,10 +30,10 @@ const USE_DEV_TOOLS = process.env.NODE_ENV !== 'production';
 export const configStore = (context: any) => {
   const sagaMiddleware = createSagaMiddleware();
   const store = configureStore({
-      reducer: rootReducer,
-      preloadedState: {},
-      middleware: [sagaMiddleware],
-      devTools: USE_DEV_TOOLS
+    reducer: rootReducer,
+    preloadedState: {},
+    middleware: [sagaMiddleware],
+    devTools: USE_DEV_TOOLS,
   });
 
   store.sagaTask = sagaMiddleware.run(rootSaga);

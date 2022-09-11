@@ -1,39 +1,61 @@
 import { IUser } from './../../structures/user';
 import { createReducer } from '@reduxjs/toolkit';
 
-import { login, loginSuccess, logOut, logOutSuccess } from '../actions';
+import { getProfileAction, getProfileSuccessAction, loginAction, loginSuccessAction, logOutAction, logOutSuccessAction } from '../actions';
+import { IReducerGlobalState } from '../../structures';
 
-export const userState: IUser = {
-  isAuthenticated: false,
+type UserStateType = IReducerGlobalState & IUser;
+export const userState: UserStateType = {
   firstName: '',
   lastName: '',
+  email: ''
 };
 
 export default {
-  user: createReducer<IUser>(userState, (builder) => {
+  user: createReducer<UserStateType>(userState, (builder) => {
     builder
-      .addCase(login, (state) => {
-        state.isAuthenticated = false;
-      })
-      .addCase(loginSuccess, (state, { payload }) => {
-        const { firstName, lastName } = payload || {};
-
+      .addCase(getProfileAction, (state) => {
         state = {
-          isAuthenticated: true,
-          firstName,
-          lastName,
+          ...state,
+          loading: true,
+          error: ''
+        }
+      })
+      .addCase(getProfileSuccessAction, (state, { payload }) => {
+        state = {
+          loading: false,
+          error: '',
+          ...payload,
+        }
+      });
+
+    builder
+      .addCase(loginAction, (state) => {
+        state.loading = true;
+      })
+      .addCase(loginSuccessAction, (state, { payload }) => {
+        state = {
+          loading: false,
+          error: '',
+          ...payload,
         };
       });
 
     builder
-      .addCase(logOut, (state) => {
-        state.isAuthenticated = false;
-      })
-      .addCase(logOutSuccess, (state) => {
+      .addCase(logOutAction, (state) => {
         state = {
-          isAuthenticated: false,
+          ...state,
+          loading: false,
+          error: ''
+        }
+      })
+      .addCase(logOutSuccessAction, (state) => {
+        state = {
+          loading: false,
+          error: '',
           firstName: '',
           lastName: '',
+          email: '',
         };
       });
   }),

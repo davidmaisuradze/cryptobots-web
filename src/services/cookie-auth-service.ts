@@ -19,6 +19,10 @@ class CookieAuthService {
     Cookie.set(Keys.RefreshToken, refreshToken);
   }
 
+  public getRefreshToken(): string | undefined {
+    return Cookie.get(Keys.RefreshToken);
+  }
+
   public unsetTokens(): boolean {
     Cookie.remove(Keys.AccessToken);
     Cookie.remove(Keys.RefreshToken);

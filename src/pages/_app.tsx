@@ -1,22 +1,32 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
+import { ReactNode } from 'react';
+import Head from 'next/head';
+import { AppContext, AppInitialProps, AppLayoutProps } from 'next/app';
+import type { NextComponentType } from 'next';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import '../styles/globals.css';
 import { configStore } from '../state/store';
-import { BaseLayout } from '../components/UI';
+import { Layout } from '../components/UI';
 
 const { store, persistor } = configStore({});
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
+  Component,
+  pageProps,
+}: AppLayoutProps) => {
+  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
+
   return (
     <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <BaseLayout>
-            <Component {...pageProps} />
-          </BaseLayout>
-        </PersistGate>
-      </Provider>
+      <PersistGate loading={null} persistor={persistor}>
+        <Head>
+          <title>Create Next App</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        {getLayout(<Component {...pageProps} />)}
+      </PersistGate>
+    </Provider>
   );
 }
 

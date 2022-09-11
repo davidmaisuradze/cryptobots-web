@@ -1,28 +1,35 @@
 import React, { FC } from 'react';
 import Image from "next/image";
 import { Navbar, Dropdown, Avatar } from "flowbite-react";
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../state/selectors';
 
 export const Header: FC = () => {
+  const user = useSelector(selectUser);
+
   return (
     <Navbar fluid rounded>
-      <Navbar.Brand href="https://flowbite.com/">
+      <Navbar.Brand href="/">
         <Image
-          alt="Flowbite logo"
+          alt="3DCryptoBots"
           height="32"
-          src="https://flowbite.com/docs/images/logo.svg"
+          src="/assets/images/page_logo.png"
           width="32"
         />
         <span className="self-center whitespace-nowrap pl-3 text-xl font-semibold dark:text-white">
-          Flowbite
+          3D Crypto Bots
         </span>
       </Navbar.Brand>
+      <div className="flex md:order-2">
+        <div>user: {user?.email}</div>
+      </div>
       <div className="flex md:order-2">
         <Dropdown
           inline
           label={
             <Avatar
               alt="User settings"
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              img="/assets/images/default_avatar.png"
               rounded
             />
           }

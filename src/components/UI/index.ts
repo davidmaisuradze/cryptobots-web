@@ -1,7 +1,6 @@
 export * from './Icons';
 export { Header } from './Header';
-import { FooterComponent } from './Footer';
-export { BaseLayout } from './Layout/BaseLayout';
+export { Layout, LandingLayout } from './Layout';
 export { NftItem } from './Nft/Item';
 export { NftList } from './Nft/List';
 export { Image } from './Image';

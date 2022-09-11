@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { IUser, IMarketState, IAppState } from '.';
+import { IUser, IAppState } from '.';
 
 export interface IRootState {
   app: IAppState;
@@ -10,7 +10,7 @@ export interface WithDispatch {
   dispatch: Dispatch;
 }
 
-export interface IReducerMetaState {
-  error?: string;
+export interface IReducerGlobalState {
   loading?: boolean;
+  error?: string;
 }

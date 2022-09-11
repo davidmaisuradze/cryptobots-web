@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactElement
 }
 
-export const BaseLayout: FC<Props> = ({ children }) => {
+export const LandingLayout: FC<Props> = ({ children }) => {
   return (
     <>
       <Header/>
@@ -17,4 +17,4 @@ export const BaseLayout: FC<Props> = ({ children }) => {
   );
 };
 
-export default BaseLayout;
+export default LandingLayout;
