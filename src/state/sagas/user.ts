@@ -1,8 +1,8 @@
-import { all, call, delay, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import Router from 'next/router';
 
 import { loginSuccessAction, logOutSuccessAction, registerSuccessAction, UserActions } from '../actions';
-import { getProfile, loginUser, registerUser } from '../../services/user.service';
+import { getProfile, loginUser, logoutUser, registerUser } from '../../services/user.service';
 import { IUser } from '../../structures';
 import { cookieAuthService } from '../../services';
 
@@ -21,7 +21,7 @@ export function* getProfileSaga() {
 }
 
 export function* registerSaga(action: any) {
-  const user: IUser = yield call(registerUser, action.payload);
+  const { data: user } = yield call(registerUser, action.payload);
 
   yield put(
     registerSuccessAction({
@@ -35,8 +35,9 @@ export function* registerSaga(action: any) {
 }
 
 export function* loginSaga(action: any) {
-  const user: IUser = yield call(loginUser, action.payload);
+  const { data: user } = yield call(loginUser, action.payload);
 
+  console.log(user, 'user');
   yield put(
     loginSuccessAction({
       firstName: user.firstName,
@@ -45,18 +46,19 @@ export function* loginSaga(action: any) {
     }),
   );
 
-  console.log(user, 'user');
-  if(user.token){
-    yield call(cookieAuthService.setTokens, user.token?.accessToken, user.token?.refreshToken)
+  if (user.token){
+    yield call(cookieAuthService.setTokens, user.token?.accessToken, user.token?.refreshToken);
   }
 
   yield call(Router.push, '/dashboard');
 }
 
 export function* logoutSaga() {
-  yield delay(200);
-
+  yield call(logoutUser);
+  
   yield put(logOutSuccessAction());
+  yield call(cookieAuthService.unsetTokens);
+  yield call(Router.push, '/');
 }
 
 export default function* root() {

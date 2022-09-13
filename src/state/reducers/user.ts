@@ -14,49 +14,43 @@ export const userState: UserStateType = {
 export default {
   user: createReducer<UserStateType>(userState, (builder) => {
     builder
-      .addCase(getProfileAction, (state) => {
-        state = {
-          ...state,
-          loading: true,
-          error: ''
-        }
-      })
-      .addCase(getProfileSuccessAction, (state, { payload }) => {
-        state = {
-          loading: false,
-          error: '',
-          ...payload,
-        }
-      });
+      .addCase(getProfileAction, (state) => ({
+        ...state,
+        loading: true,
+        error: ''
+      }))
+      .addCase(getProfileSuccessAction, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: '',
+        ...payload,
+      }));
 
     builder
-      .addCase(loginAction, (state) => {
-        state.loading = true;
-      })
-      .addCase(loginSuccessAction, (state, { payload }) => {
-        state = {
-          loading: false,
-          error: '',
-          ...payload,
-        };
-      });
+      .addCase(loginAction, (state) => ({
+        ...state,
+        loading: true,
+      }))
+      .addCase(loginSuccessAction, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: '',
+        ...payload,
+      }));
 
     builder
-      .addCase(logOutAction, (state) => {
-        state = {
-          ...state,
-          loading: false,
-          error: ''
-        }
-      })
-      .addCase(logOutSuccessAction, (state) => {
-        state = {
-          loading: false,
-          error: '',
-          firstName: '',
-          lastName: '',
-          email: '',
-        };
-      });
+      .addCase(logOutAction, (state) => ({
+        ...state,
+        loading: false,
+        error: ''
+      }))
+      .addCase(logOutSuccessAction, (state) => ({
+        ...state,
+        loading: false,
+        error: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+      }));
   }),
 };

@@ -27,3 +27,7 @@ export const registerUser = async (payload: IUserRegisterDto): Promise<IUser> =>
 export const loginUser = async (payload: IUserLoginDto): Promise<IUser> => {
   return apiService.post<IUserLoginDto, IUser>(API_PATHS.login, payload);
 };
+
+export const logoutUser = async (): Promise<any> => {
+  return apiService.post(API_PATHS.logout, {});
+};

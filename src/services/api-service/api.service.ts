@@ -46,7 +46,7 @@ class ApiService {
     });
 
     this.axiosInstance.interceptors.request.use((request) => {
-      const pathsWithoutAuth = [API_PATHS.login, API_PATHS.logout, API_PATHS.recoverPassword, API_PATHS.resetPassword];
+      const pathsWithoutAuth = [API_PATHS.login, API_PATHS.recoverPassword, API_PATHS.resetPassword];
 
       if (!request?.headers || pathsWithoutAuth.some((path) => request.url?.includes(path))) {
         return request;

@@ -9,8 +9,9 @@ export const appState: IAppState = {
 export default {
   app: createReducer<IAppState>(appState, (builder) => {
     builder
-      .addCase(setAppError, (state, { payload }) => {
-        state.errorMessage = payload;
-      });
+      .addCase(setAppError, (state, { payload }) => ({
+        ...state,
+        errorMessage: payload,
+      }));
   }),
 };
