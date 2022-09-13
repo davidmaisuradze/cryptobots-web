@@ -1,8 +1,10 @@
 import { all, call, delay, put, takeLatest } from 'redux-saga/effects';
+import Router from 'next/router';
 
 import { loginSuccessAction, logOutSuccessAction, registerSuccessAction, UserActions } from '../actions';
 import { getProfile, loginUser, registerUser } from '../../services/user.service';
 import { IUser } from '../../structures';
+import { cookieAuthService } from '../../services';
 
 export function* getProfileSaga() {
   const user: IUser = yield call(getProfile);
@@ -14,6 +16,8 @@ export function* getProfileSaga() {
       email: user.email,
     }),
   );
+
+
 }
 
 export function* registerSaga(action: any) {
@@ -26,6 +30,8 @@ export function* registerSaga(action: any) {
       email: user.email,
     }),
   );
+
+  yield call(Router.push, '/auth/login');
 }
 
 export function* loginSaga(action: any) {
@@ -38,6 +44,13 @@ export function* loginSaga(action: any) {
       email: user.email,
     }),
   );
+
+  console.log(user, 'user');
+  if(user.token){
+    yield call(cookieAuthService.setTokens, user.token?.accessToken, user.token?.refreshToken)
+  }
+
+  yield call(Router.push, '/dashboard');
 }
 
 export function* logoutSaga() {
