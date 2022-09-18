@@ -33,8 +33,8 @@ const Login: NextPage = () => {
   };
 
   return (
-    <div className="mt-12 w-1/2 sm:w-2/5 m-auto h-screen">
-      <h1 className="mb-4 text-2xl font-medium leading-6 text-gray-900">Register</h1>
+    <div className="mt-12 w-1/2 sm:w-1/4 m-auto">
+      <h1 className="mb-4 text-2xl font-medium leading-6 text-gray-900">Login</h1>
       <div className="md:grid md:grid-cols-1 md:gap-6">
         <div className="mt-5 md:col-span-2 md:mt-0">
           <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>

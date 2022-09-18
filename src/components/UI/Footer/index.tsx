@@ -10,7 +10,7 @@ import {
 
 export const FooterComponent: FC = () => {
   return (
-    <div className="w-full bottom-0">
+    <div className="w-full mt-auto">
       <Footer container>
         <div className="w-full bottom-0">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
