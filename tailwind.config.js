@@ -1,4 +1,4 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+// const defaultTheme = require("tailwindcss/defaultTheme");
 
 // const themeConstants = {
 //   paper: "#F9F9F9",
@@ -26,10 +26,10 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 // };
 
 module.exports = {
- mode: "jit",
- purge: [
-    "./node_modules/flowbite-react/**/*.js",
-    "./src/**/*.{js,ts,jsx,tsx}",
+  mode: 'jit',
+  purge: [
+    './node_modules/flowbite-react/**/*.js',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
   // darkMode: false, // or 'media' or 'class'
   // theme: {
@@ -52,5 +52,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require('flowbite/plugin')],
 };

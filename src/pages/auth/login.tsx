@@ -17,13 +17,13 @@ type Inputs = {
 
 const formSchema = Yup.object().shape({
   email: Yup.string().matches(PATTERN_CONFIG.email.pattern, { message: 'Wrong email format' }),
-  password: Yup.string().required("Password is required"),
+  password: Yup.string().required('Password is required'),
 });
 
 const Login: NextPage = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
-    mode: "onTouched",
+    mode: 'onTouched',
     resolver: yupResolver(formSchema)
   });
 
@@ -71,6 +71,6 @@ const Login: NextPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

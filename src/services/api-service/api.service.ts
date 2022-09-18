@@ -24,6 +24,7 @@ class ApiService {
         throw failedRequest;
       }
 
+      // eslint-disable-next-line no-useless-catch
       try {
         const { data } = await this.axiosInstance.post(
           API_PATHS.refreshToken,

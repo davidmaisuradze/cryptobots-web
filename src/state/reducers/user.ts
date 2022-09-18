@@ -1,7 +1,17 @@
 import { IUser } from './../../structures/user';
 import { createReducer } from '@reduxjs/toolkit';
 
-import { getProfileAction, getProfileSuccessAction, loginAction, loginSuccessAction, logOutAction, logOutSuccessAction } from '../actions';
+import {
+  getProfileAction,
+  getProfileFailedAction,
+  getProfileSuccessAction,
+  loginAction,
+  loginFailedAction,
+  loginSuccessAction,
+  logOutAction,
+  logOutFailedAction,
+  logOutSuccessAction 
+} from '../actions';
 import { IReducerGlobalState } from '../../structures';
 
 type UserStateType = IReducerGlobalState & IUser;
@@ -24,6 +34,11 @@ export default {
         loading: false,
         error: '',
         ...payload,
+      }))
+      .addCase(getProfileFailedAction, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: payload,
       }));
 
     builder
@@ -36,6 +51,11 @@ export default {
         loading: false,
         error: '',
         ...payload,
+      }))
+      .addCase(loginFailedAction, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: payload,
       }));
 
     builder
@@ -51,6 +71,11 @@ export default {
         firstName: '',
         lastName: '',
         email: '',
+      }))
+      .addCase(logOutFailedAction, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: payload,
       }));
   }),
 };

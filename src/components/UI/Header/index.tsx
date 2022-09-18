@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
-import Image from "next/image";
-import { Navbar, Dropdown, Avatar } from "flowbite-react";
+import Image from 'next/image';
+import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../state/selectors';
 import { cookieAuthService } from '../../../services';

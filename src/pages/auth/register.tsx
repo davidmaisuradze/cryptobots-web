@@ -20,21 +20,21 @@ const formSchema = Yup.object().shape({
   lastName: Yup.string().required('Last name is required'),
   email: Yup.string().matches(PATTERN_CONFIG.email.pattern, { message: 'Wrong email format' }),
   password: Yup.string()
-    .required("Password is required")
-    .min(4, "Password length should be at least 4 characters")
-    .max(12, "Password cannot exceed more than 12 characters")
+    .required('Password is required')
+    .min(4, 'Password length should be at least 4 characters')
+    .max(12, 'Password cannot exceed more than 12 characters')
     .matches(PATTERN_CONFIG.password.pattern, { message: 'Min. 8 characters, both upper and lower case letters, at least one number and special character' }),
   confirmedPassword: Yup.string()
-    .required("Confirm Password is required")
-    .min(4, "Password length should be at least 4 characters")
-    .max(12, "Password cannot exceed more than 12 characters")
-    .oneOf([Yup.ref("password")], "Passwords do not match")
+    .required('Confirm Password is required')
+    .min(4, 'Password length should be at least 4 characters')
+    .max(12, 'Password cannot exceed more than 12 characters')
+    .oneOf([Yup.ref('password')], 'Passwords do not match')
 });
 
 const Register: NextPage = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
-    mode: "onTouched",
+    mode: 'onTouched',
     resolver: yupResolver(formSchema)
   });
 
@@ -120,6 +120,6 @@ const Register: NextPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Register;

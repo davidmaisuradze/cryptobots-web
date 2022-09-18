@@ -28,6 +28,6 @@ const MyApp: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
       </PersistGate>
     </Provider>
   );
-}
+};
 
-export default MyApp
+export default MyApp;

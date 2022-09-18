@@ -1,64 +1,87 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, CallEffect, put, PutEffect, takeLatest } from 'redux-saga/effects';
 import Router from 'next/router';
 
-import { loginSuccessAction, logOutSuccessAction, registerSuccessAction, UserActions } from '../actions';
+import {
+  loginSuccessAction,
+  logOutSuccessAction,
+  registerSuccessAction,
+  loginFailedAction,
+  registerFailedAction,
+  UserActions, 
+  logOutFailedAction 
+} from '../actions';
 import { getProfile, loginUser, logoutUser, registerUser } from '../../services/user.service';
 import { IUser } from '../../structures';
 import { cookieAuthService } from '../../services';
+import { AnyAction } from 'redux';
 
-export function* getProfileSaga() {
-  const user: IUser = yield call(getProfile);
+export function* getProfileSaga(): Generator<CallEffect<IUser> | PutEffect<AnyAction>, void, IUser> {
+  try {
+    const user: IUser = yield call(getProfile);
 
-  yield put(
-    loginSuccessAction({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    }),
-  );
-
-
+    yield put(
+      loginSuccessAction({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      }),
+    );
+  } catch(error: any) {
+    yield put(loginFailedAction(error.message));
+  }
 }
 
 export function* registerSaga(action: any) {
-  const { data: user } = yield call(registerUser, action.payload);
+  try{
+    const { data: user } = yield call(registerUser, action.payload);
 
-  yield put(
-    registerSuccessAction({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    }),
-  );
+    yield put(
+      registerSuccessAction({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      }),
+    );
 
-  yield call(Router.push, '/auth/login');
+    yield call(Router.push, '/auth/login');
+  } catch(error: any) {
+    yield put(registerFailedAction(error.message));
+  }
 }
 
 export function* loginSaga(action: any) {
-  const { data: user } = yield call(loginUser, action.payload);
+  try{
+    const { data: user } = yield call(loginUser, action.payload);
 
-  console.log(user, 'user');
-  yield put(
-    loginSuccessAction({
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-    }),
-  );
+    console.log(user, 'user');
+    yield put(
+      loginSuccessAction({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+      }),
+    );
 
-  if (user.token){
-    yield call(cookieAuthService.setTokens, user.token?.accessToken, user.token?.refreshToken);
+    if (user.token){
+      yield call(cookieAuthService.setTokens, user.token?.accessToken, user.token?.refreshToken);
+    }
+
+    yield call(Router.push, '/dashboard');
+  } catch(error: any) {
+    yield put(loginFailedAction(error.message));
   }
-
-  yield call(Router.push, '/dashboard');
 }
 
 export function* logoutSaga() {
-  yield call(logoutUser);
+  try {
+    yield call(logoutUser);
   
-  yield put(logOutSuccessAction());
-  yield call(cookieAuthService.unsetTokens);
-  yield call(Router.push, '/');
+    yield put(logOutSuccessAction());
+    yield call(cookieAuthService.unsetTokens);
+    yield call(Router.push, '/');
+  } catch(error: any) {
+    yield put(logOutFailedAction(error.message));
+  }
 }
 
 export default function* root() {
