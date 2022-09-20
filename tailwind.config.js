@@ -31,24 +31,9 @@ module.exports = {
     './node_modules/flowbite-react/**/*.js',
     './src/**/*.{js,ts,jsx,tsx}',
   ],
-  // darkMode: false, // or 'media' or 'class'
-  // theme: {
-  //   extend: {
-  //     colors: {
-  //       paper: themeConstants.paper,
-  //       primary: themeConstants.primary,
-  //       secondary: themeConstants.secondary,
-  //       error: themeConstants.error,
-  //       fg: themeConstants.fg.main,
-  //       "fg-dark": themeConstants.fg.dark,
-  //     },
-  //   }, 
-  //   screens: {
-  //     ...defaultTheme.screens,
-  //     ...themeConstants.breakpoints,
-  //     ha: { raw: "(hover: hover)" },
-  //   },
-  // },
+  fontSize: {
+    xxs: '0.3rem',
+  },
   variants: {
     extend: {},
   },

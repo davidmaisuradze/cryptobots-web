@@ -2,10 +2,10 @@ import React, { FC, useEffect } from 'react';
 import Image from 'next/image';
 import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../../state/selectors';
-import { cookieAuthService } from '../../../services';
+import { selectUser } from '../../state/selectors';
+import { UserActions } from '../../state/actions';
+import { cookieAuthService } from '../../services';
 import { useDispatch } from 'react-redux';
-import { UserActions } from '../../../state/actions';
 
 export const Header: FC = () => {
   const dispatch = useDispatch();

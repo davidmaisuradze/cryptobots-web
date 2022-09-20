@@ -10,7 +10,10 @@ import {
   loginSuccessAction,
   logOutAction,
   logOutFailedAction,
-  logOutSuccessAction 
+  logOutSuccessAction, 
+  requestPasswordResetAction,
+  requestPasswordResetFailedAction,
+  requestPasswordResetSuccessAction
 } from '../actions';
 import { IReducerGlobalState } from '../../structures';
 
@@ -73,6 +76,22 @@ export default {
         email: '',
       }))
       .addCase(logOutFailedAction, (state, { payload }) => ({
+        ...state,
+        loading: false,
+        error: payload,
+      }));
+
+    builder
+      .addCase(requestPasswordResetAction, (state) => ({
+        ...state,
+        loading: false,
+        error: ''
+      }))
+      .addCase(requestPasswordResetSuccessAction, (state) => ({
+        ...state,
+        loading: false,
+      }))
+      .addCase(requestPasswordResetFailedAction, (state, { payload }) => ({
         ...state,
         loading: false,
         error: payload,

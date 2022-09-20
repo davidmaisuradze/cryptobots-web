@@ -8,9 +8,11 @@ import {
   loginFailedAction,
   registerFailedAction,
   UserActions, 
-  logOutFailedAction 
+  logOutFailedAction,
+  requestPasswordResetSuccessAction,
+  requestPasswordResetFailedAction 
 } from '../actions';
-import { getProfile, loginUser, logoutUser, registerUser } from '../../services/user.service';
+import { getProfile, loginUser, logoutUser, registerUser, requestPasswordReset } from '../../services/user.service';
 import { IUser } from '../../structures';
 import { cookieAuthService } from '../../services';
 import { AnyAction } from 'redux';
@@ -84,11 +86,24 @@ export function* logoutSaga() {
   }
 }
 
+export function* requestPasswordResetSaga(action: any) {
+  try{
+    const { data: user } = yield call(requestPasswordReset, action.payload);
+
+    yield put(
+      requestPasswordResetSuccessAction(),
+    );
+  } catch(error: any) {
+    yield put(requestPasswordResetFailedAction(error.message));
+  }
+}
+
 export default function* root() {
   yield all([
     takeLatest(UserActions.GET_PROFILE_REQUEST, getProfileSaga),
     takeLatest(UserActions.USER_REGISTER_REQUEST, registerSaga),
     takeLatest(UserActions.USER_LOGIN_REQUEST, loginSaga),
     takeLatest(UserActions.USER_LOGOUT_REQUEST, logoutSaga),
+    takeLatest(UserActions.REQUEST_PASSWORD_RESET_REQUEST, requestPasswordResetSaga),
   ]);
 }

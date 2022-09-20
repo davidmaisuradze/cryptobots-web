@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import Head from 'next/head';
 import { AppContext, AppInitialProps, AppLayoutProps } from 'next/app';
 import type { NextComponentType } from 'next';
@@ -7,7 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import '../styles/globals.css';
 import { configStore } from '../state/store';
-import { Layout } from '../components/UI';
+import { Layout } from '../components';
 
 const { store, persistor } = configStore({});
 

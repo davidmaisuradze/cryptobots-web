@@ -1,4 +1,5 @@
-import { ArrowRight, LandingLayout } from '../components/UI';
+import { LandingLayout } from '../components';
+import { ArrowRight } from '../components/UI';
 
 const Home = () => {
   return (
