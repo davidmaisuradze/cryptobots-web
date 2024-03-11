@@ -2,28 +2,25 @@ import type { NextPage } from 'next';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Label, TextInput } from 'flowbite-react';
 import { PATTERN_CONFIG } from '../../config';
 import { useDispatch } from 'react-redux';
 import { loginAction } from '../../state/actions';
+import { Input, AuthLayout, AUTH_TYPES, ButtonSubmit } from '../../components/UI';
 
 type Inputs = {
-  firstName: string;
-  lastName: string;
   email: string;
   password: string;
-  confirmedPassword: string;
 };
 
 const formSchema = Yup.object().shape({
   email: Yup.string().matches(PATTERN_CONFIG.email.pattern, { message: 'Wrong email format' }),
-  password: Yup.string().required("Password is required"),
+  password: Yup.string().required('Password is required'),
 });
 
 const Login: NextPage = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>({
-    mode: "onTouched",
+    mode: 'onTouched',
     resolver: yupResolver(formSchema)
   });
 
@@ -33,44 +30,38 @@ const Login: NextPage = () => {
   };
 
   return (
-    <div className="mt-12 w-1/2 sm:w-2/5 m-auto h-screen">
-      <h1 className="mb-4 text-2xl font-medium leading-6 text-gray-900">Register</h1>
-      <div className="md:grid md:grid-cols-1 md:gap-6">
-        <div className="mt-5 md:col-span-2 md:mt-0">
-          <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="email">Email</Label>
-              </div>
-              <TextInput
-                id="email"
-                type="email"
-                {...register('email')}
-                placeholder="test@test.com"
-              />
-              {errors.email && <div className="text-red-400">{errors.email.message}</div>}
-            </div>
+    <AuthLayout action={AUTH_TYPES.LOGIN} showAlternativeOptions={true}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Input type="email" name="email" label="Email" errors={errors.email} register={register} />
+        <Input type="password" name="password" label="Password" errors={errors.password} register={register} />
 
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="password">Password</Label>
-              </div>
-              <TextInput
-                id="password"
-                type="password"
-                {...register('password')}
-              />
-              {errors.password && <div className="text-red-400">{errors.password.message}</div>}
-            </div>
-
-            <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-              <button type="submit" className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Submit</button>
-            </div>
-          </form>
+        <div className="flex justify-between items-center mb-6">
+          <div className="form-group form-check">
+            <input
+              type="checkbox"
+              className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              id="exampleCheck2"
+            />
+            <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">Remember me</label>
+          </div>
+          <a href="#!" className="text-gray-800">Forgot password?</a>
         </div>
-      </div>
-    </div>
+
+        <div className="text-center flex justify-between lg:text-left">
+          <ButtonSubmit title="Login" />
+          <p className="text-sm font-semibold mt-2 pt-1 mb-0">
+              Don<span>&apos;</span>t have an account?
+            <a
+              href="/auth/register"
+              className="ml-2 text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+            >
+              Register
+            </a>
+          </p>
+        </div>
+      </form>
+    </AuthLayout>
   );
-}
+};
 
 export default Login;

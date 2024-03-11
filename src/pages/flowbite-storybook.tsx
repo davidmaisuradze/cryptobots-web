@@ -24,18 +24,18 @@ import {
   Timeline,
   Toast,
   Tooltip,
-} from "flowbite-react";
-import Head from "next/head";
-import Image from "next/image";
-import React, { useState } from "react";
-import { BiBuoy } from "react-icons/bi";
+} from 'flowbite-react';
+import Head from 'next/head';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { BiBuoy } from 'react-icons/bi';
 import {
   BsDribbble,
   BsFacebook,
   BsGithub,
   BsInstagram,
   BsTwitter,
-} from "react-icons/bs";
+} from 'react-icons/bs';
 import {
   HiAdjustments,
   HiArrowNarrowRight,
@@ -56,10 +56,10 @@ import {
   HiUserCircle,
   HiViewBoards,
   HiX,
-} from "react-icons/hi";
-import Header from "../components/FlowbiteStorybook/header";
-import Sidebar from "../components/FlowbiteStorybook/sidebar";
-import { SidebarProvider } from "../components/FlowbiteStorybook/context/SidebarContext";
+} from 'react-icons/hi';
+import Header from '../components/FlowbiteStorybook/header';
+import Sidebar from '../components/FlowbiteStorybook/sidebar';
+import { SidebarProvider } from '../components/FlowbiteStorybook/context/SidebarContext';
 
 export default function Index(): JSX.Element {
   return (
@@ -353,13 +353,13 @@ function AccordionExample(): JSX.Element {
             navbars, and more.
           </p>
           <p className="text-gray-500 dark:text-gray-400">
-            Check out this guide to learn how to{" "}
+            Check out this guide to learn how to{' '}
             <a
               href="https://flowbite.com/docs/getting-started/introduction/"
               className="text-blue-600 hover:underline dark:text-blue-500"
             >
               get started
-            </a>{" "}
+            </a>{' '}
             and start developing websites even faster with components on top of
             Tailwind CSS.
           </p>
@@ -374,13 +374,13 @@ function AccordionExample(): JSX.Element {
             equivalent in our Figma file.
           </p>
           <p className="text-gray-500 dark:text-gray-400">
-            Check out the{" "}
+            Check out the{' '}
             <a
               href="https://flowbite.com/figma/"
               className="text-blue-600 hover:underline dark:text-blue-500"
             >
               Figma design system
-            </a>{" "}
+            </a>{' '}
             based on the utility classes from Tailwind CSS and components from
             Flowbite.
           </p>
@@ -589,17 +589,14 @@ function CarouselExample(): JSX.Element {
   return (
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="..."
           src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="..."
           src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           alt="..."
           src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
@@ -730,7 +727,7 @@ function ModalExample(): JSX.Element {
   return (
     <>
       <p className="text-white">
-        This component doesn&apos;t work on <code>next</code> and{" "}
+        This component doesn&apos;t work on <code>next</code> and{' '}
         <code>react@18</code> due to a hydration mismatch.
       </p>
       {/* <Button onClick={() => setOpen(true)}>Toggle modal</Button>

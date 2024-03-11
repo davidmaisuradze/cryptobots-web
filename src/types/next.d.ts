@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-shadow */
 import type {
   NextComponentType,
   NextPageContext,

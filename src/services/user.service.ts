@@ -15,6 +15,10 @@ export interface IUserLoginDto {
   password: string;
 }
 
+export interface IRequestResetPasswordDto {
+  email: string;
+}
+
 export const getProfile = async (): Promise<IUser> => {
   return apiService.get(API_PATHS.profile);
 };
@@ -26,4 +30,12 @@ export const registerUser = async (payload: IUserRegisterDto): Promise<IUser> =>
 
 export const loginUser = async (payload: IUserLoginDto): Promise<IUser> => {
   return apiService.post<IUserLoginDto, IUser>(API_PATHS.login, payload);
+};
+
+export const logoutUser = async (): Promise<any> => {
+  return apiService.post(API_PATHS.logout, {});
+};
+
+export const requestPasswordReset = async (payload: IRequestResetPasswordDto): Promise<boolean> => {
+  return apiService.put<IRequestResetPasswordDto, boolean>(API_PATHS.resetPassword, payload);
 };
